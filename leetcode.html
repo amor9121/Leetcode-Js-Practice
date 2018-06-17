@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+</head>
+<style>
+    #root{
+        font-size: 100px;
+        color:aquamarine;
+    }
+</style>
+<body>
+    <div id="root"></div>
+<script>
+//LeetCode344 Reverse String
+
+function reverseString(s){
+    var result = "";
+    var ary = s.split("");
+
+    for( var i = ary.length - 1; i >= 0; i-- ){
+        result += ary[i];
+    }
+    return result;
+}
+document.getElementById("root").innerHTML=reverseString("hello how are you");
+console.log(reverseString("hello how are you"));
+
+//LeetCode242 Valid Anagram
+
+function isAnagram (s,t){
+
+    if(s.length != t.length) return false;
+    var s = s.split("").sort().join("");
+    var t = t.split("").sort().join("");
+
+    return s == t;
+}
+
+console.log(isAnagram("roma","amor"));
+console.log(isAnagram("cat","rat"));
+
+//LeetCode13 Roman to Integer
+
+function romanToInt(s){
+    var map={
+        I:1,
+        V:5,
+        X:10,
+        L:50,
+        C:100,
+        D:500,
+        M:1000,
+    }
+
+    var sum = 0;
+
+    for(var i = 0; i < s.length; i++){
+        var v1 = map[s[i]];
+        var v2 = map[s[i+1]];
+        if(v2 > v1){
+            sum = sum + v2 - v1;
+            i++;
+        } else {
+            sum = sum + v1;
+        }
+
+    }
+    return sum;
+
+};
+console.log(romanToInt("VI"));
+console.log(romanToInt("III"));
+console.log(romanToInt("XC"));
+
+
+</script>
+    
+</body>
+</html>
